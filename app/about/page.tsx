@@ -115,8 +115,7 @@ export default function AboutPage() {
               style={{ border: `${LINE} solid ${BLACK}`, background: WHITE }}
             >
               <span style={{ background: ACCENT, border: `${LINE} solid ${BLACK}` }} className="inline-block h-3 w-8" />
-              <span>Inspired by bold minimal design</span>
-              <span className="opacity-60">Built to feel like a product</span>
+              <span>A little context about this site and me</span>
             </div>
 
             <p className="text-lg md:text-xl leading-relaxed opacity-85">
