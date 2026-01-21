@@ -54,6 +54,7 @@ const projects = [
     subtitle: "Volunteer Clearance Platform",
     period: "Sep 2025 – Present",
     type: "Volunteer Project • Full-Stack",
+    category: "software",
     description:
       "Built and operated a full-stack volunteer-clearance system for a LA-based nonprofit working on criminal justice reform. The platform digitizes intake, approvals, and reporting end-to-end, cutting manual processing delays by 40% and supporting 10000+ active users.",
     challenge:
@@ -74,6 +75,7 @@ const projects = [
     subtitle: "AI-Assisted Code Review Platform",
     period: "May 2025 – Present",
     type: "Personal Project • Full-Stack + AI",
+    category: "software",
     description:
       "Developed a real-time AI-assisted code review tool that leverages Gemini API for contextual analysis and actionable fix suggestions. The platform provides inline comments, diff visualization, and persona-driven analysis modes to accelerate code review workflows.",
     challenge:
@@ -95,6 +97,7 @@ const projects = [
     subtitle: "AI-Powered Job Application Tracker",
     period: "Jan 2025 – Mar 2025",
     type: "Academic Project • Full-Stack + AI",
+    category: "software",
     description:
       "Built a comprehensive job tracking platform with real-time dashboards, resume analysis, and AI-powered cover letter customization. The system unifies job search, application tracking, and analytics in one streamlined interface.",
     challenge:
@@ -117,6 +120,7 @@ const projects = [
     subtitle: "Sentiment Analysis Dashboard",
     period: "Apr 2025 – May 2025",
     type: "Academic Project • Full-Stack + ML",
+    category: "software",
     description:
       "Engineered a full-stack sentiment analysis platform with Chrome extension integration to classify sentiment from webpages, YouTube transcripts, and comments. Features real-time visualization, sentiment history tracking, and comprehensive testing suite.",
     challenge:
@@ -139,6 +143,7 @@ const projects = [
     subtitle: "Ford Automotive Repair Management Suite",
     period: "Dec 2019 – Jan 2022",
     type: "Professional Project • Full-Stack",
+    category: "software",
     description:
       "Delivered and modernized Ford's repair management system by unifying legacy SBDO and DTA platforms into a scalable Angular-Node.js-PostgreSQL stack. The system serves thousands of technicians across Ford dealerships worldwide.",
     challenge:
@@ -153,6 +158,52 @@ const projects = [
     impact:
       "Reduced manual data-entry errors by 40% and improved technician efficiency by 25%. The system now handles repair workflows for Ford's entire dealership network, processing thousands of service requests daily.",
     stack: ["Angular", "Node.js", "PostgreSQL", "Docker", "AWS EC2", "Jenkins", "REST APIs"],
+  },
+  {
+    id: 6,
+    title: "Impact of Gender Difference in Affective States",
+    subtitle: "EEG-Based Emotion Recognition Research",
+    period: "Dec 2018",
+    type: "Research Paper • IEEE Published",
+    category: "research",
+    description:
+      "Published research analyzing EEG brain activity patterns to identify gender-based differences in emotional responses. The study used unsupervised learning to classify emotions (happy, sad, fear, disgust, neutral) across male and female subjects, revealing distinct neural patterns and hemispheric activity variations.",
+    challenge:
+      "Understanding how male and female brains process emotions differently is crucial for affective computing applications. Existing research lacked detailed analysis of gender-specific neural patterns across multiple emotional states using EEG data.",
+    solution: [
+      "Collected and processed EEG data from 10 subjects (5 male, 5 female) across 5 emotional states",
+      "Applied feature extraction and unsupervised learning methods for emotion classification",
+      "Analyzed hemispheric activity patterns and frequency domain characteristics by gender",
+      "Identified centroid coordinates for high-intensity regions in different emotional states",
+      "Validated findings showing males exhibit more left-hemisphere activity for happiness",
+    ],
+    impact:
+      "Published in IEEE ICCIC 2018, contributing novel insights into gender-specific neural patterns in emotion processing. The research established baseline centroid values for emotion classification and demonstrated significant gender differences in affective brain responses.",
+    stack: ["EEG Analysis", "Machine Learning", "Signal Processing", "Python", "Unsupervised Learning"],
+    github: "https://doi.org/10.1109/ICCIC.2018.8782383",
+  },
+  {
+    id: 7,
+    title: "Analysis of Image Segmentation Algorithms for Leukemic Cell Detection",
+    subtitle: "Medical Image Processing Research",
+    period: "Apr 2019",
+    type: "Research Paper • IEEE Published",
+    category: "research",
+    description:
+      "Conducted comprehensive analysis of image segmentation algorithms for automated detection of leukemic cells in blood samples. The research compared multiple segmentation techniques to determine the most effective approach for accurate cell identification in medical diagnostics.",
+    challenge:
+      "Manual detection of leukemic cells is time-consuming, prone to human error, and requires specialized expertise. Healthcare systems need automated, reliable methods for early leukemia detection to improve diagnosis speed and accuracy.",
+    solution: [
+      "Evaluated multiple image segmentation algorithms (thresholding, edge detection, region-based, clustering)",
+      "Developed preprocessing pipeline for blood sample image enhancement and noise reduction",
+      "Implemented comparative analysis framework measuring accuracy, sensitivity, and specificity",
+      "Identified optimal segmentation approach for leukemic cell boundary detection",
+      "Validated results against expert-annotated medical datasets",
+    ],
+    impact:
+      "Published in IEEE ICOEI 2019, providing evidence-based recommendations for medical image processing systems. The research established performance benchmarks for leukemia detection algorithms, contributing to improved automated diagnostic tools.",
+    stack: ["Image Processing", "Computer Vision", "MATLAB", "Medical Imaging", "Pattern Recognition"],
+    github: "https://doi.org/10.1109/ICOEI.2019.8862696",
   },
 ];
 
@@ -249,7 +300,7 @@ function ProjectCard({
               className="px-6 py-3 text-xs uppercase tracking-[0.28em] font-black active:translate-y-[1px]"
               style={{ border: `${LINE} solid ${BLACK}`, background: BLACK, color: ACCENT }}
             >
-              View on GitHub →
+              {project.type.includes("Research Paper") ? "View Paper →" : "View on GitHub →"}
             </a>
           ) : null}
         </div>
@@ -303,6 +354,7 @@ export default function ProjectsPage() {
   const [headerVisible, setHeaderVisible] = React.useState(false);
   const [heroVisible, setHeroVisible] = React.useState(false);
   const [servicesVisible, setServicesVisible] = React.useState(false);
+  const [activeTab, setActiveTab] = React.useState<"software" | "research">("software");
 
   React.useEffect(() => {
     const headerTimer = setTimeout(() => setHeaderVisible(true), 300);
@@ -316,8 +368,12 @@ export default function ProjectsPage() {
     };
   }, []);
 
+  const softwareProjects = projects.filter((p) => p.category === "software");
+  const researchProjects = projects.filter((p) => p.category === "research");
+  const displayProjects = activeTab === "software" ? softwareProjects : researchProjects;
+
   return (
-    <MilliShell topText="PROJECTS • PROJECTS • PROJECTS •">
+    <MilliShell topText="SOFTWARE ENGINEER • FRONTEND • FULLSTACK • BUILDING MODERN WEB APPS">
       <div style={{ background: WHITE, color: BLACK }}>
         {/* HERO */}
         <section
@@ -347,8 +403,8 @@ export default function ProjectsPage() {
               }}
             >
               <p className="text-base sm:text-lg md:text-xl opacity-90 leading-relaxed font-medium">
-                A collection of full-stack applications, AI-powered tools, and production systems
-                I&apos;ve built — focused on solving real problems with clean code and thoughtful UX.
+                A collection of full-stack applications, research papers, AI-powered tools, and production systems
+                I&apos;ve built focused on solving real problems with clean code and thoughtful UX.
               </p>
             </div>
 
@@ -363,7 +419,7 @@ export default function ProjectsPage() {
                 className="inline-block px-6 py-3 font-black text-sm uppercase tracking-wider"
                 style={{ border: `${LINE} solid ${BLACK}`, background: BLACK, color: ACCENT }}
               >
-                Full-Stack + AI
+                Full-Stack + AI + Research
               </div>
             </div>
           </div>
@@ -395,8 +451,8 @@ export default function ProjectsPage() {
                 desc: "LLM integrations, sentiment analysis, automated workflows using Gemini API, Ollama, and TensorFlow.",
               },
               {
-                title: "Developer Tooling",
-                desc: "CI/CD pipelines, containerization with Docker, automated testing, and performance optimization.",
+                title: "Research & Publications",
+                desc: "IEEE-published research papers",
               },
             ].map((service, idx) => (
               <div
@@ -415,14 +471,56 @@ export default function ProjectsPage() {
           </div>
         </section>
 
-        {/* LIST */}
+        {/* TABS */}
+        <section className="px-5 sm:px-6 lg:px-10 pb-4">
+          <div className="flex flex-col sm:flex-row gap-2" style={{ borderBottom: `${LINE} solid ${BLACK}` }}>
+            <button
+              type="button"
+              onClick={() => setActiveTab("software")}
+              className="px-4 sm:px-6 md:px-8 py-3 sm:py-4 font-black text-xs sm:text-sm uppercase tracking-[0.18em] sm:tracking-[0.24em] transition-all duration-300 relative flex-1 sm:flex-initial"
+              style={{
+                background: activeTab === "software" ? ACCENT : WHITE,
+                border: `${LINE} solid ${BLACK}`,
+                color :'black',
+                borderBottom: activeTab === "software" ? "none" : `${LINE} solid ${BLACK}`,
+                marginBottom: activeTab === "software" ? "-2px" : "0",
+                zIndex: activeTab === "software" ? 10 : 1,
+              }}
+            >
+              <span className="hidden sm:inline">Software Projects</span>
+              <span className="sm:hidden">Software</span>
+              <span className="ml-2 opacity-70">({softwareProjects.length})</span>
+            </button>
+
+            <button
+              type="button"
+              onClick={() => setActiveTab("research")}
+              className="px-4 sm:px-6 md:px-8 py-3 sm:py-4 font-black text-xs sm:text-sm uppercase tracking-[0.18em] sm:tracking-[0.24em] transition-all duration-300 relative flex-1 sm:flex-initial"
+              style={{
+                background: activeTab === "research" ? ACCENT : WHITE,
+                border: `${LINE} solid ${BLACK}`,
+                borderBottom: activeTab === "research" ? "none" : `${LINE} solid ${BLACK}`,
+                marginBottom: activeTab === "research" ? "-2px" : "0",
+                zIndex: activeTab === "research" ? 10 : 1,
+                color:BLACK
+              }}
+            >
+              <span className="hidden sm:inline">Research Publications</span>
+              <span className="sm:hidden">Research</span>
+              <span className="ml-2 opacity-70">({researchProjects.length})</span>
+            </button>
+          </div>
+        </section>
+
+        {/* PROJECT LIST */}
         <section className="px-5 sm:px-6 lg:px-10 pb-16">
           <div className="space-y-10">
-            {projects.map((project, idx) => (
+            {displayProjects.map((project, idx) => (
               <div key={project.id}>
-                {/* slower stagger */}
-                <ProjectCard project={project} delay={2000 + idx * 520} />
-                {idx !== projects.length - 1 ? <Rule className="my-10 opacity-100" /> : null}
+                <ProjectCard project={project} delay={idx * 300} />
+                {idx !== displayProjects.length - 1 ? (
+                  <Rule className="my-10 opacity-100" />
+                ) : null}
               </div>
             ))}
           </div>

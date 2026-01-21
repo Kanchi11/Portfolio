@@ -115,19 +115,16 @@ export default function AboutPage() {
               style={{ border: `${LINE} solid ${BLACK}`, background: WHITE }}
             >
               <span style={{ background: ACCENT, border: `${LINE} solid ${BLACK}` }} className="inline-block h-3 w-8" />
-              <span>A little context about this site and me</span>
+              <span>"The secret of getting ahead is getting started." — Mark Twain </span>
             </div>
 
             <p className="text-lg md:text-xl leading-relaxed opacity-85">
-            Hi !! I’m Kanchana Dhana Sadasivan. I build thoughtful software that feels seamless from the user’s first click to the logic running behind the scenes. I enjoy shaping interfaces that are intuitive and elegant, while making sure the systems supporting them are fast, reliable, and easy to maintain. Every line of code, whether on the page or the server, has a purpose.
+            Hi !! I&apos;m Kanchana Dhana Sadasivan. I build thoughtful software that feels seamless from the user&apos;s first click to the logic running behind the scenes. I enjoy shaping interfaces that are intuitive and elegant, while making sure the systems supporting them are fast, reliable, and easy to maintain. Every line of code, whether on the page or the server, has a purpose.
             </p>
 
             <p className="text-lg md:text-xl leading-relaxed opacity-85">
               I graduated with a masters from NC State and I have 3.5+ years of experience shipping production web applications.
-              Over these past years, I’ve taken ideas from concept to production, designing and shipping applications using React, Next.js, and Angular, while also building APIs, managing databases, and deploying to cloud environments. I focus on creating experiences that are polished and performant, while ensuring the architecture behind them is robust, scalable, and sustainable.
-</p>
-
-<p className="text-lg md:text-xl leading-relaxed opacity-85">
+              Over these past years, I&apos;ve taken ideas from concept to production, designing and shipping applications using React, Next.js, and Angular, while also building APIs, managing databases, and deploying to cloud environments. I focus on creating experiences that are polished and performant, while ensuring the architecture behind them is robust, scalable, and sustainable.
             </p>
 
             <p className="text-lg md:text-xl leading-relaxed opacity-85">
@@ -204,9 +201,8 @@ export default function AboutPage() {
 </p>
 
 <p className="text-lg md:text-xl leading-relaxed opacity-85">
-  For me, the most rewarding part is seeing how design and user experience come together to create something that is not only visually appealing but also intuitive to use. That perspective guides how I approach every interface I build, whether it’s part of a portfolio or a production application.
+  For me, the most rewarding part is seeing how design and user experience come together to create something that is not only visually appealing but also intuitive to use. That perspective guides how I approach every interface I build, whether it&apos;s part of a portfolio or a production application.
 </p>
-
 
             {/* Accent mark */}
             <div className="pt-4">
@@ -255,20 +251,23 @@ export default function AboutPage() {
               <div className="flex flex-col items-center gap-4 flex-shrink-0 w-full md:w-auto">
                 <div className="text-xs uppercase tracking-[0.28em] opacity-70 text-center">
                   <span className="inline-block pb-1" style={{ borderBottom: `${LINE} solid ${BLACK}` }}>
-                    HOVER/TAP TO PET MY PUP
+                    <span className="md:hidden">TAP TO PET THE PUP</span>
+                    <span className="hidden md:inline">HOVER TO PET THE PUP</span>
                   </span>
                 </div>
 
                 {/* lime framed plate */}
                 <div
-                  className="p-4"
+                  className="p-4 pointer-events-none"
                   style={{
                     border: `${LINE} solid ${BLACK}`,
                     background: ACCENT,
                   }}
                 >
-                  <div style={{ border: `${LINE} solid ${BLACK}`, background: WHITE }} className="p-3">
-                    <AboutPup size={220} fps={5} mode="loopWhileHover" idleFrame={0} />
+                  <div style={{ border: `${LINE} solid ${BLACK}`, background: WHITE }} className="p-3 pointer-events-none">
+                    <div className="pointer-events-auto">
+                      <AboutPup size={220} fps={5} mode="loopWhileHover" idleFrame={0} />
+                    </div>
                   </div>
                 </div>
               </div>

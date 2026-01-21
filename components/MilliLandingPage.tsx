@@ -234,7 +234,7 @@ export default function MilliLandingPage() {
     <div className="relative w-full h-screen overflow-hidden" style={{ background: WHITE }}>
       {/* Top Marquee */}
       <div className="fixed top-0 left-0 right-0 z-50" style={{ background: WHITE, borderBottom: `${LINE}px solid ${BLACK}` }}>
-        <Marquee text="SOFTWARE ENGINEER • 3+ YEARS EXPERIENCE • FRONTEND • FULLSTACK • BUILDING MODERN WEB APPS" speed={30} />
+        <Marquee text="SOFTWARE ENGINEER • 3.5+ YEARS EXPERIENCE • FRONTEND • FULLSTACK • BUILDING MODERN WEB APPS" speed={30} />
       </div>
 
       {/* Bottom Marquee */}

@@ -42,11 +42,12 @@ const experiences: Experience[] = [
     period: "Nov 2019 – Dec 2022",
     location: "Pune, India",
     description:
-      "Owned frontend delivery for enterprise web apps — production modules, bug-fix cycles, and feature rollouts with tight QA + backend collaboration.",
+      "Owned frontend delivery for enterprise web apps, production modules, bug-fix cycles, and feature rollouts with tight QA + backend collaboration.",
     bullets: [
       "Built/owned Angular UI modules end-to-end (implementation, enhancements, releases).",
       "Improved UX consistency via shared patterns/components and edge-case hardening.",
       "Worked in production rhythms: code reviews, sprint planning, incident fixes.",
+      "Led and Mentored the frontend team and got recognized with internal performance awards"
     ],
     tags: ["Angular", "React", "TypeScript", "REST", "HTML/CSS"],
   },
@@ -59,10 +60,10 @@ const experiences: Experience[] = [
     description:
       "Built prototypes + internal tooling with an engineering mindset — practical, measurable, easy to hand off.",
     bullets: [
-      "Created small tools/dashboards to make workflows easier to monitor and explain.",
-      "Iterated fast on prototypes; kept things structured and readable for handoff.",
+      "Built a supervised ML pipeline in Python/scikit-learn/TensorFlow to classify defective vs. non-defective bimetal components; improved QA accuracy by 35% after comparative model evaluation.",
+      "Engineered a Flask dashboard for result visualization, experiment tracking, and exports to support QDSM lab reviews and future automation studies.",
     ],
-    tags: ["Python", "Prototyping", "Dashboards"],
+    tags: ["Python", "Flask", "Dashboards"],
   },
 ];
 
@@ -222,7 +223,7 @@ export default function WorkPage() {
   };
 
   return (
-    <MilliShell topText="WORK • WORK • WORK •">
+    <MilliShell topText= "SOFTWARE ENGINEER • FRONTEND • FULLSTACK • BUILDING MODERN WEB APPS">
       <div style={{ background: WHITE, color: BLACK }}>
         <header 
           className="px-5 sm:px-6 lg:px-10 pt-10 lg:pt-16 transition-all duration-1000 ease-out"
@@ -326,7 +327,6 @@ export default function WorkPage() {
                 transform: navVisible ? "translateY(0)" : "translateY(10px)",
               }}
             >
-              Drag / trackpad / arrows
             </p>
 
             <style jsx>{`

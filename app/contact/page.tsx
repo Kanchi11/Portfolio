@@ -197,7 +197,7 @@ export default function ContactPage() {
   }, []);
 
   return (
-    <MilliShell topText="CONNECT • CONNECT • CONNECT •">
+    <MilliShell topText="SOFTWARE ENGINEER • FRONTEND • FULLSTACK • BUILDING MODERN WEB APPS">
       <div style={{ background: WHITE, color: BLACK }}>
         {showSuccessModal && (
           <SuccessModal onClose={() => setShowSuccessModal(false)} />
@@ -259,7 +259,6 @@ export default function ContactPage() {
                     setEmailTouched(false);
                     setMessageTouched(false);
                   } catch (error) {
-                    console.error('EmailJS error:', error);
                     window.location.href = `mailto:kds@ncsu.edu?subject=${encodeURIComponent(`Portfolio Contact from ${name}`)}&body=${encodeURIComponent(`From: ${name} (${email})\n\n${message}`)}`;
                   } finally {
                     setIsSubmitting(false);
