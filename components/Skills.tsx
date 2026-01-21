@@ -56,7 +56,7 @@ export default function Skills() {
                     </div>
                     <div className="w-full bg-gray-800 rounded-full h-2 overflow-hidden">
                       <motion.div
-                        className="h-full bg-milli-yellow rounded-full"
+                        className="h-full bg-accent rounded-full"
                         initial={{ width: 0 }}
                         animate={inView ? { width: `${(skill.level / 5) * 100}%` } : {}}
                         transition={{ duration: 0.8, delay: categoryIndex * 0.1 + index * 0.05 }}

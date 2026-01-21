@@ -55,7 +55,7 @@ const projects = [
     period: "Sep 2025 – Present",
     type: "Volunteer Project • Full-Stack",
     description:
-      "Built and operated a full-stack volunteer-clearance system for a LA-based nonprofit working on criminal justice reform. The platform digitizes intake, approvals, and reporting end-to-end, cutting manual processing delays by 40% and supporting 100+ active users.",
+      "Built and operated a full-stack volunteer-clearance system for a LA-based nonprofit working on criminal justice reform. The platform digitizes intake, approvals, and reporting end-to-end, cutting manual processing delays by 40% and supporting 10000+ active users.",
     challenge:
       "The organization was managing volunteer clearances through manual paperwork and spreadsheets, creating delays of weeks and risking data inconsistencies. They needed a secure, role-based system that could handle sensitive background checks while remaining accessible to non-technical staff.",
     solution: [
@@ -66,15 +66,14 @@ const projects = [
     ],
     impact:
       "Reduced manual processing time by 40%, eliminated data entry errors, and provided real-time visibility into clearance status for both volunteers and administrators. The system now handles all volunteer onboarding for the organization.",
-    stack: ["Next.js", "TypeScript", "PostgreSQL", "Supabase", "TailwindCSS", "Drizzle ORM"],
-    github: "https://github.com/Kanchi11",
+    stack: ["Next.js", "TypeScript", "PostgreSQL", "Supabase", "TailwindCSS", "Drizzle ORM", "Vercel"],
   },
   {
     id: 2,
     title: "CodeReviewAI",
     subtitle: "AI-Assisted Code Review Platform",
     period: "May 2025 – Present",
-    type: "Academic Project • Full-Stack + AI",
+    type: "Personal Project • Full-Stack + AI",
     description:
       "Developed a real-time AI-assisted code review tool that leverages Gemini API for contextual analysis and actionable fix suggestions. The platform provides inline comments, diff visualization, and persona-driven analysis modes to accelerate code review workflows.",
     challenge:
@@ -88,7 +87,7 @@ const projects = [
     impact:
       "Reduced manual review effort by 50% and boosted developer adoption by 3× in internal testing. The tool now handles both automated initial reviews and assists human reviewers with complex issues.",
     stack: ["React", "TypeScript", "TailwindCSS", "Node.js", "Gemini API", "Monaco Editor", "SSE"],
-    github: "https://github.com/Kanchi11",
+    github: "https://github.com/Kanchi11/Code-Review-AI",
   },
   {
     id: 3,
@@ -110,7 +109,7 @@ const projects = [
     impact:
       "Improved relevant job discovery rate by 35% through intelligent scraping and filtering. Automated cover letter generation saved users an average of 15 minutes per application while maintaining personalization quality.",
     stack: ["React", "Flask", "MongoDB", "Docker", "Selenium", "Ollama", "Google OAuth"],
-    github: "https://github.com/Kanchi11",
+    github: "https://github.com/CSC-510-G7/application-tracking-system",
   },
   {
     id: 4,
@@ -132,7 +131,7 @@ const projects = [
     impact:
       "Boosted review and triage efficiency by 60% through optimized data flows and real-time visualization. The platform processes sentiment across multiple sources in seconds versus hours of manual analysis.",
     stack: ["React", "JavaScript", "Django", "TensorFlow", "Chart.js", "Jest", "Chrome API"],
-    github: "https://github.com/Kanchi11",
+    github:"https://github.com/NCSU-SE-Spring2025-Group6/Sentimental-Analyzer-Pro"
   },
   {
     id: 5,
@@ -382,7 +381,7 @@ export default function ProjectsPage() {
             className="text-xs uppercase tracking-[0.32em] font-black mb-8 pb-3"
             style={{ borderBottom: `${LINE} solid ${BLACK}` }}
           >
-            What I Build
+            What I Built
           </div>
 
           <div className="grid gap-8 md:grid-cols-3">

@@ -46,7 +46,6 @@ const BLACK = "#000";
 const WHITE = "#fff";
 const YELLOW = "#B7FF2A";
 
-// Smooth "Milli-like" ease
 const GRID_EASE: [number, number, number, number] = [0.25, 0.1, 0.25, 1];
 
 const Marquee = ({ text, speed = 20 }: { text: string; speed?: number }) => {
@@ -243,10 +242,6 @@ export default function MilliLandingPage() {
         <Marquee text="REACT • NEXT.JS • TYPESCRIPT • NODE.JS • ANGULAR • TAILWIND • AWS • DOCKER • MONGODB • POSTGRESQL" speed={25} />
       </div>
 
-      {/* Side Text - Hidden on mobile */}
-      <SideText text="MS COMPUTER SCIENCE × NC STATE × 3.92 GPA ×" side="left" />
-      <SideText text="× SAN QUENTIN × INFOSYS × ISRO × PRODUCTION WEB APPS" side="right" />
-
       {/* Main Grid */}
       <div className="absolute inset-0" style={{ paddingTop: 48, paddingBottom: 48 }}>
         <motion.div
@@ -414,7 +409,7 @@ export default function MilliLandingPage() {
         transition={{ delay: 1.0 }}
       >
         <span className="flex items-center gap-2 text-[10px] md:text-xs tracking-[0.2em] font-bold uppercase" style={{ color: BLACK }}>
-          <X className="w-3 h-3" />CLICK ANY CORNER TO EXPLORE<X className="w-3 h-3" />
+          {/* <X className="w-3 h-3" />CLICK ANY CORNER TO EXPLORE<X className="w-3 h-3" /> */}
         </span>
       </motion.div>
     </div>

@@ -120,18 +120,19 @@ export default function AboutPage() {
             </div>
 
             <p className="text-lg md:text-xl leading-relaxed opacity-85">
-              Hi !! I am Kanchana Dhana Sadasivan, a frontend leaning full stack engineer who cares deeply about craft.
-              I build interfaces that feel effortless and backends that stay clean, reliable, and easy to evolve.
+            Hi !! I’m Kanchana Dhana Sadasivan. I build thoughtful software that feels seamless from the user’s first click to the logic running behind the scenes. I enjoy shaping interfaces that are intuitive and elegant, while making sure the systems supporting them are fast, reliable, and easy to maintain. Every line of code, whether on the page or the server, has a purpose.
             </p>
 
             <p className="text-lg md:text-xl leading-relaxed opacity-85">
               I graduated with a masters from NC State and I have 3.5+ years of experience shipping production web applications.
-              I have built React, NextJS and Angular UI for enterprise platforms, designed APIs, and improved performance so products feel fast and dependable.
+              Over these past years, I’ve taken ideas from concept to production, designing and shipping applications using React, Next.js, and Angular, while also building APIs, managing databases, and deploying to cloud environments. I focus on creating experiences that are polished and performant, while ensuring the architecture behind them is robust, scalable, and sustainable.
+</p>
+
+<p className="text-lg md:text-xl leading-relaxed opacity-85">
             </p>
 
             <p className="text-lg md:text-xl leading-relaxed opacity-85">
-              I like taking ownership from idea to shipped feature.
-              I pay attention to details like spacing, states, edge cases, and the small interactions that make software feel intentional.
+              What excites me most is seeing how thoughtful design and solid engineering come together to solve real problems. I enjoy exploring new ways to make products feel better, discovering small details that improve user experiences, and building systems that can grow with the product. Working across the full stack allows me to connect innovative ideas, design, and implementation in a way that delivers meaningful impact.
               I also care about clarity, maintainability, and good defaults so teams can move quickly without creating mess.
             </p>
 
@@ -195,20 +196,18 @@ export default function AboutPage() {
           </h2>
 
           <div className="max-w-4xl space-y-6">
-            <p className="text-lg md:text-xl leading-relaxed opacity-85">
-              I built this portfolio because I wanted it to feel like a product, not a template.
-              Most portfolios feel either too busy or too generic, so I designed something intentional, easy to skim, and focused on real work.
-            </p>
+          <p className="text-lg md:text-xl leading-relaxed opacity-85">
+  I built this portfolio because I wanted it to feel intentional and purposeful, not just a template or a collection of work. I was inspired by bold, minimal sites that balance clarity with personality, and I wanted to create something that feels polished and thoughtful while reflecting my own style and approach.
+</p>
 
-            <p className="text-lg md:text-xl leading-relaxed opacity-85">
-              The inspiration came from bold minimal sites like Milli that balance structure with personality.
-              I wanted strong typography, thick borders, and small interactions that add character without becoming noise.
-            </p>
+<p className="text-lg md:text-xl leading-relaxed opacity-85">
+  Every choice, from typography and spacing to interactions and transitions, was made with care. I focused on how the content flows, how the interface feels to the user, and how small details can make an experience feel effortless. Even subtle touches can change the way people perceive and navigate a page.
+</p>
 
-            <p className="text-lg md:text-xl leading-relaxed opacity-85">
-              What matters to me is craft.
-              I like getting the spacing right, making transitions feel natural, and building UI that supports what people actually want to do.
-            </p>
+<p className="text-lg md:text-xl leading-relaxed opacity-85">
+  For me, the most rewarding part is seeing how design and user experience come together to create something that is not only visually appealing but also intuitive to use. That perspective guides how I approach every interface I build, whether it’s part of a portfolio or a production application.
+</p>
+
 
             {/* Accent mark */}
             <div className="pt-4">
@@ -244,15 +243,14 @@ export default function AboutPage() {
           <div className="max-w-5xl">
             <div className="flex flex-col md:flex-row gap-10 md:gap-12 items-start">
               <div className="flex-1 space-y-6">
-                <p className="text-lg md:text-xl leading-relaxed opacity-85">
-                  Outside of engineering, I paint, play badminton, and go on long walks with my dog.
-                  I love animals and my retirement goal is building an animal shelter where I can make a real difference for creatures who need it.
-                </p>
+              <p className="text-lg md:text-xl leading-relaxed opacity-85">
+  Outside of software, I enjoy raquet sports, long walks or hikes, and spending time with my dog. I also cook, paint and play board games, which let me explore creativity, strategy, and patience in different ways. These activities help me recharge, stay curious, and approach challenges with fresh perspective.
+</p>
 
-                <p className="text-lg md:text-xl leading-relaxed opacity-85">
-                  I also collect inspiration from everyday things like menus, packaging, signage, and tiny UI moments that are weirdly satisfying.
-                  Those details usually go unnoticed, but they are what make products feel better.
-                </p>
+<p className="text-lg md:text-xl leading-relaxed opacity-85">
+  I also notice the little details in the world around me, from the way a menu is structured to the way interactions feel in the apps I use. Those observations often spark ideas and influence how I think about building software that is clear, intuitive, and enjoyable to use.
+</p>
+
               </div>
 
               <div className="flex flex-col items-center gap-4 flex-shrink-0 w-full md:w-auto">

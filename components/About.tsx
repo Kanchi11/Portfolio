@@ -40,7 +40,7 @@ export default function About() {
               </p>
               <p className="text-lg md:text-xl text-gray-300 leading-relaxed">
                 Currently working at <span className="text-red-400 font-semibold">San Quentin SkunkWorks</span>, building secure web applications 
-                that support 100+ users with role-based workflows. I'm passionate about creating smooth, interactive experiences 
+                that support 1000+ users with role-based workflows. I'm passionate about creating smooth, interactive experiences 
                 while maintaining clean, scalable code architecture.
               </p>
               <p className="text-lg md:text-xl text-gray-300 leading-relaxed">

@@ -1,6 +1,6 @@
 # 🎉 Portfolio Project - Complete!
 
-## What We Built
+## What I Built
 
 A stunning, interactive portfolio website inspired by milli.agency, featuring:
 
