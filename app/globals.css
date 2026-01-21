@@ -1,0 +1,70 @@
+/* app/globals.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --black: #000000;
+  --white: #ffffff;
+  --accent: #B7FF2A;
+  --line: 3px;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--white);
+  color: var(--black);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Milli-ish focus */
+*:focus-visible {
+  outline: var(--line) solid var(--black);
+  outline-offset: 2px;
+}
+
+/* Inputs (so they look like the screenshot) */
+input,
+textarea,
+button {
+  font: inherit;
+}
+
+input,
+textarea {
+  border: var(--line) solid var(--black);
+  background: var(--white);
+  padding: 10px 12px;
+  width: 100%;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 140px;
+}
+
+button {
+  border: var(--line) solid var(--black);
+  background: var(--black);
+  color: var(--white);
+  padding: 10px 18px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+button:active {
+  transform: translateY(1px);
+}
+
+/* Utility for thick borders like Milli */
+.milli-border {
+  border: var(--line) solid var(--black);
+}
