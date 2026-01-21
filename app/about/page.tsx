@@ -204,14 +204,6 @@ export default function AboutPage() {
   For me, the most rewarding part is seeing how design and user experience come together to create something that is not only visually appealing but also intuitive to use. That perspective guides how I approach every interface I build, whether it&apos;s part of a portfolio or a production application.
 </p>
 
-            {/* Accent mark */}
-            <div className="pt-4">
-              <span
-                aria-hidden
-                className="inline-block h-[6px] w-24 md:w-32"
-                style={{ background: ACCENT, border: `${LINE} solid ${BLACK}` }}
-              />
-            </div>
           </div>
         </section>
 
