@@ -2,11 +2,57 @@
 
 import * as React from "react";
 import { MilliShell } from "@/components/MilliShell";
+import emailjs from '@emailjs/browser';
 
 const LINE = "var(--line)";
 const BLACK = "var(--black)";
 const WHITE = "var(--white)";
 const ACCENT = "var(--accent)";
+
+// Simple Success Modal - Fully Responsive
+function SuccessModal({ onClose }: { onClose: () => void }) {
+  return (
+    <div 
+      className="fixed inset-0 z-50 flex items-center justify-center p-4"
+      style={{ background: 'rgba(0, 0, 0, 0.7)' }}
+      onClick={onClose}
+    >
+      <div
+        className="relative w-full max-w-sm p-6 md:p-8"
+        style={{ 
+          border: `${LINE} solid ${BLACK}`,
+          background: ACCENT,
+        }}
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div className="text-center">
+          <div 
+            className="font-black uppercase tracking-tight mb-2 md:mb-3"
+            style={{ fontSize: "clamp(1.5rem, 5vw, 2rem)" }}
+          >
+            SENT!
+          </div>
+          
+          <p className="text-xs md:text-sm opacity-80 mb-4 md:mb-5">
+            I&apos;ll reply asap.
+          </p>
+
+          <button
+            onClick={onClose}
+            className="w-full md:w-auto px-5 py-2 font-black text-xs uppercase tracking-[0.22em] hover:opacity-90 transition-opacity"
+            style={{
+              border: `${LINE} solid ${BLACK}`,
+              background: BLACK,
+              color: WHITE,
+            }}
+          >
+            CLOSE
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 function IconBox({
   label,
@@ -112,6 +158,31 @@ export default function ContactPage() {
   const [frameVisible, setFrameVisible] = React.useState(false);
   const [leftPanelVisible, setLeftPanelVisible] = React.useState(false);
   const [rightPanelVisible, setRightPanelVisible] = React.useState(false);
+  const [isSubmitting, setIsSubmitting] = React.useState(false);
+  const [showSuccessModal, setShowSuccessModal] = React.useState(false);
+
+  // Form state
+  const [name, setName] = React.useState('');
+  const [email, setEmail] = React.useState('');
+  const [message, setMessage] = React.useState('');
+
+  // Touched state (to show errors only after user interacts)
+  const [nameTouched, setNameTouched] = React.useState(false);
+  const [emailTouched, setEmailTouched] = React.useState(false);
+  const [messageTouched, setMessageTouched] = React.useState(false);
+
+  // Validation functions
+  const isValidName = (value: string) => value.trim().length >= 2;
+  const isValidEmail = (value: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+  const isValidMessage = (value: string) => value.trim().length >= 10;
+
+  // Error messages
+  const nameError = nameTouched && !isValidName(name) ? 'Name must be at least 2 characters' : '';
+  const emailError = emailTouched && !isValidEmail(email) ? 'Please enter a valid email address' : '';
+  const messageError = messageTouched && !isValidMessage(message) ? 'Message must be at least 10 characters' : '';
+
+  // Check if form is valid
+  const isFormValid = isValidName(name) && isValidEmail(email) && isValidMessage(message);
 
   React.useEffect(() => {
     const frameTimer = setTimeout(() => setFrameVisible(true), 100);
@@ -128,7 +199,10 @@ export default function ContactPage() {
   return (
     <MilliShell topText="CONNECT • CONNECT • CONNECT •">
       <div style={{ background: WHITE, color: BLACK }}>
-        {/* Full-bleed frame */}
+        {showSuccessModal && (
+          <SuccessModal onClose={() => setShowSuccessModal(false)} />
+        )}
+
         <div
           className="mt-8 transition-all duration-1000 ease-out"
           style={{ 
@@ -138,7 +212,6 @@ export default function ContactPage() {
           }}
         >
           <div className="grid gap-0 md:grid-cols-[1.05fr_0.95fr]">
-            {/* LEFT: accent form panel */}
             <div
               className="p-6 md:p-10 transition-all duration-1000 ease-out"
               style={{
@@ -158,16 +231,39 @@ export default function ContactPage() {
               </div>
 
               <div className="mt-3 text-xs md:text-sm font-bold uppercase tracking-[0.22em] opacity-80">
-                Send a note — role + team + timeline is perfect.
+                Send a note to connect .
               </div>
 
               <form
                 className="mt-8 space-y-5"
-                onSubmit={(e) => {
+                onSubmit={async (e) => {
                   e.preventDefault();
-                  // You can wire this to an API later; this keeps it usable now.
-                  window.location.href =
-                    "mailto:kds@ncsu.edu?subject=Portfolio%20Contact&body=Hi%20Kanchana%2C%0A%0A";
+                  setIsSubmitting(true);
+                  
+                  const form = e.currentTarget;
+                  
+                  try {
+                    await emailjs.sendForm(
+                      process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+                      process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
+                      form,
+                      process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
+                    );
+                    
+                    setShowSuccessModal(true);
+                    form.reset();
+                    setName('');
+                    setEmail('');
+                    setMessage('');
+                    setNameTouched(false);
+                    setEmailTouched(false);
+                    setMessageTouched(false);
+                  } catch (error) {
+                    console.error('EmailJS error:', error);
+                    window.location.href = `mailto:kds@ncsu.edu?subject=${encodeURIComponent(`Portfolio Contact from ${name}`)}&body=${encodeURIComponent(`From: ${name} (${email})\n\n${message}`)}`;
+                  } finally {
+                    setIsSubmitting(false);
+                  }
                 }}
               >
                 <div>
@@ -175,10 +271,21 @@ export default function ContactPage() {
                     Name
                   </label>
                   <input
+                    name="from_name"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    onBlur={() => setNameTouched(true)}
+                    required
                     className="mt-2 w-full px-4 py-3 text-sm md:text-base"
                     placeholder="Your name"
-                    style={{ border: `${LINE} solid ${BLACK}`, background: WHITE }}
+                    style={{ 
+                      border: `${LINE} solid ${nameError ? '#dc2626' : BLACK}`, 
+                      background: WHITE 
+                    }}
                   />
+                  {nameError && (
+                    <div className="mt-1 text-xs text-red-600">{nameError}</div>
+                  )}
                 </div>
 
                 <div>
@@ -186,10 +293,22 @@ export default function ContactPage() {
                     Email address
                   </label>
                   <input
+                    name="from_email"
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    onBlur={() => setEmailTouched(true)}
+                    required
                     className="mt-2 w-full px-4 py-3 text-sm md:text-base"
                     placeholder="you@email.com"
-                    style={{ border: `${LINE} solid ${BLACK}`, background: WHITE }}
+                    style={{ 
+                      border: `${LINE} solid ${emailError ? '#dc2626' : BLACK}`, 
+                      background: WHITE 
+                    }}
                   />
+                  {emailError && (
+                    <div className="mt-1 text-xs text-red-600">{emailError}</div>
+                  )}
                 </div>
 
                 <div>
@@ -197,31 +316,38 @@ export default function ContactPage() {
                     Message
                   </label>
                   <textarea
+                    name="message"
+                    value={message}
+                    onChange={(e) => setMessage(e.target.value)}
+                    onBlur={() => setMessageTouched(true)}
+                    required
                     className="mt-2 w-full px-4 py-3 text-sm md:text-base resize-none"
-                    placeholder="What role is this for? What are you building?"
                     style={{
-                      border: `${LINE} solid ${BLACK}`,
+                      border: `${LINE} solid ${messageError ? '#dc2626' : BLACK}`,
                       background: WHITE,
                       minHeight: 150,
                     }}
                   />
+                  {messageError && (
+                    <div className="mt-1 text-xs text-red-600">{messageError}</div>
+                  )}
                 </div>
 
                 <button
                   type="submit"
-                  className="inline-flex items-center justify-center px-7 py-3 font-black uppercase tracking-[0.22em] active:translate-y-[1px] hover:opacity-90 transition-opacity"
+                  disabled={isSubmitting || !isFormValid}
+                  className="inline-flex items-center justify-center px-7 py-3 font-black uppercase tracking-[0.22em] active:translate-y-[1px] hover:opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed"
                   style={{
                     border: `${LINE} solid ${BLACK}`,
                     background: BLACK,
                     color: WHITE,
                   }}
                 >
-                  Submit
+                  {isSubmitting ? 'SENDING...' : 'SUBMIT'}
                 </button>
               </form>
             </div>
 
-            {/* RIGHT: quick links panel */}
             <div 
               className="transition-all duration-1000 ease-out"
               style={{ 
@@ -230,7 +356,6 @@ export default function ContactPage() {
                 transform: rightPanelVisible ? "translateX(0)" : "translateX(20px)",
               }}
             >
-              {/* Top area */}
               <div className="p-6 md:p-10">
                 <div className="text-[10px] md:text-xs font-black uppercase tracking-[0.28em] opacity-70">
                   QUICK LINKS
@@ -264,7 +389,6 @@ export default function ContactPage() {
                     <MailIcon />
                   </IconBox>
 
-                  {/* Resume download slot */}
                   <IconBox
                     label="Resume"
                     sublabel="Download PDF"
@@ -282,12 +406,11 @@ export default function ContactPage() {
                       transitionDelay: "1800ms",
                     }}
                   >
-                    Prefer LinkedIn? Same. Send a note with the role + team and I'll reply fast.
+                    Prefer LinkedIn? Same. Send a note with the role + team and I&apos;ll reply asap.
                   </div>
                 </div>
               </div>
 
-              {/* Bottom footer strip */}
               <div style={{ borderTop: `${LINE} solid ${BLACK}` }}>
                 <div className="px-6 md:px-10 py-4 text-[10px] md:text-xs font-black uppercase tracking-[0.28em] opacity-60">
                   COPYRIGHT 2026 © KANCHANA DS
@@ -297,7 +420,6 @@ export default function ContactPage() {
           </div>
         </div>
 
-        {/* spacing */}
         <div className="h-12 md:h-20" />
       </div>
     </MilliShell>

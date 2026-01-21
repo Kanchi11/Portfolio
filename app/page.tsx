@@ -6,10 +6,10 @@ export default function Home() {
     <>
       <MilliLandingPage />
       {/* Your other sections below */}
-      <section id="about">...</section>
-      <section id="experience">...</section>
-      <section id="projects">...</section>
-      <section id="contact">...</section>
+      <section id="about"></section>
+      <section id="experience"></section>
+      <section id="projects"></section>
+      <section id="contact"></section>
     </>
   );
 }

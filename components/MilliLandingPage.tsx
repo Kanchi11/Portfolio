@@ -409,7 +409,7 @@ export default function MilliLandingPage() {
         transition={{ delay: 1.0 }}
       >
         <span className="flex items-center gap-2 text-[10px] md:text-xs tracking-[0.2em] font-bold uppercase" style={{ color: BLACK }}>
-          {/* <X className="w-3 h-3" />CLICK ANY CORNER TO EXPLORE<X className="w-3 h-3" /> */}
+          {/* /* <X className="w-3 h-3" />CLICK ANY CORNER TO EXPLORE<X className="w-3 h-3" /> */}
         </span>
       </motion.div>
     </div>
