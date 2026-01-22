@@ -37,8 +37,8 @@ const experiences: Experience[] = [
   },
   {
     id: 2,
-    company: "Infosys Ltd",
-    role: "Software Engineer (Frontend-leaning)",
+    company: "Infosys",
+    role: "Software Engineer",
     period: "Nov 2019 – Dec 2022",
     location: "Pune, India",
     description:
